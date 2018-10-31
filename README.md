@@ -2,7 +2,7 @@
 # DockerFile Tutorial
 
 
-## Stage 1 - As basic as possible
+## Part 1 - As basic as possible
 ### hello.sh
 ```
 #!/bin/bash
@@ -29,7 +29,7 @@ docker run -i -t --rm hello /hello.sh # works
 docker run -i -t --rm hello uname -a  # also works
 ```
 
-## Stage 2 - CMD
+## Part 2 - CMD
 ### hello.sh
 ```
 #!/bin/bash
@@ -50,14 +50,14 @@ docker build -t hello .
 
 ### Run:
 ```
-docker run hello                 # works 
+docker run --rm hello                 # works 
 docker run -i -t --rm hello           # works
 docker run -i -t --rm hello hello.sh  # error not in path
 docker run -i -t --rm hello /hello.sh # still works
 docker run -i -t --rm hello uname -a  # also still works
 ```
 
-## Stage 3 - WORKDIR
+## Part 3 - WORKDIR
 ### hello.sh
 ```
 #!/bin/bash
@@ -85,7 +85,7 @@ docker run -i -t --rm hello /hello.sh     # file doesn't exist
 docker run -i -t --rm hello /app/hello.sh # works
 ```
 
-## Stage 4 - RUN
+## Part 4 - RUN
 ### hello.sh
 ```
 #!/bin/bash
@@ -112,7 +112,7 @@ docker build -t hello .
 docker run --rm hello  # big hello
 ```
 
-## Stage 5 - ADD (url), COPY (whole dir)
+## Part 5 - ADD (url), COPY (whole dir)
 ### hello.sh
 ```
 #!/bin/bash
@@ -142,7 +142,7 @@ docker run --rm hello  # big hello + dragon
 ```
 
 
-## Stage 6 - ENTRYPOINT + CMD
+## Part 6 - ENTRYPOINT + CMD
 ### hello.sh
 ```
 #!/bin/bash
@@ -172,7 +172,7 @@ docker run --rm hello dfw uug # big dfw uug
 ```
 
 
-## Stage 7 - Python app - EXPOSE
+## Part 7 - Python app - EXPOSE
 ### hello.py
 ```
 #!/usr/local/bin/python3
@@ -228,7 +228,7 @@ docker top <container>
 
 _Note the processes run as root by default_
 
-## Stage 8 - Python app - USER
+## Part 8 - Python app - USER
 ### hello.py
 ```
 #!/usr/local/bin/python3
@@ -275,7 +275,7 @@ docker ps                                   # list containers
 docker top <container>                      # show running as user 1234
 ```
 
-## Stage 9 - Compiling Code (pile on dependencies)
+## Part 9 - Compiling Code (pile on dependencies)
 ### hello.c
 ```
 #include <stdio.h>
@@ -313,7 +313,7 @@ docker images | grep fedora
 docker images | grep helloc  # significantly bigger due to build tools
 ```
 
-## Stage 10 - Multistage Builds
+## Part 10 - Multistage Builds
 ### hello.c
 ```
 #include <stdio.h>
@@ -353,7 +353,7 @@ docker images | grep fedora
 docker images | grep helloc  # essentially the same
 ```
 
-## Stage 11 - Alpine
+## Part 11 - Alpine
 ### hello.c
 ```
 #include <stdio.h>
@@ -396,14 +396,13 @@ docker images | grep alpine   # ~4.41MB
 docker images | grep helloalp # ~4.42MB
 ```
 
-## Handy Tips
-
-Use .dockerignore 
-
-
 ## Best Practices
 
 https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+
+https://runnable.com/blog/9-common-dockerfile-mistakes
+
+
 
 
 
