@@ -175,7 +175,7 @@ docker run --rm hello dfw uug # big dfw uug
 ## Part 7 - Python app - EXPOSE
 ### hello.py
 ```
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 from flask import Flask
 app = Flask(__name__)
  
@@ -214,7 +214,7 @@ docker build -t hellopy .
 ### Run:
 ```
 docker run -i -t --rm hellopy               # unreachable
-docker run -i -t --rm -p 8080:8080 hellopy  # can reach on http://localhost/
+docker run -i -t --rm -p 8080:8080 hellopy  # can reach on http://localhost:8080/
 ```
 
 EXPOSE doesn't actually do anything, and is more for documentation.
@@ -231,7 +231,7 @@ _Note the processes run as root by default_
 ## Part 8 - Python app - USER
 ### hello.py
 ```
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 from flask import Flask
 app = Flask(__name__)
  
